@@ -1,0 +1,12 @@
+{
+    "classes": [
+        {
+            "name": "12th",
+            "subjects": ["maths", "chemistry", "physics"]
+        },
+        {
+            "name": "10th",
+            "subjects": ["english", "science", "mathematics"]
+        }
+    ]
+}

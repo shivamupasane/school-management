@@ -1,0 +1,68 @@
+<h1>Add/Edit Student Profile</h1>
+<form [formGroup] = 'studentProfileForm' class="text-senter" (ngSubmit) = "onSubmit()" >
+    <div class="formGroup"><mat-form-field class="col-6"appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field></div>
+    <div class="formGroup"> <mat-form-field class="col-6" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+      </mat-form-field></div>
+     <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput type="text" formControlName="phoneNo">
+      </mat-form-field></div>
+      <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+        <mat-label>Birth date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDay">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field></div>
+      <div>
+        <mat-radio-group aria-label="Select an option" class="col-6" formControlName="sex">
+          <mat-label class="d-inline pr-5">Sex</mat-label>
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+        <mat-label>Standard</mat-label>
+        <mat-select formControlName="standard">
+          <mat-option *ngFor="let class of classes" value="{{class.name}}">{{class.name}}</mat-option>
+        </mat-select>
+      </mat-form-field></div> 
+      <form [formGroup] = 'twelthFormGroup'  *ngIf="studentProfileForm.controls['standard'].value ==='12th'">
+        <div>
+          <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+              <mat-label>Maths Marks</mat-label>
+              <input matInput type="text" formControlName="maths">
+            </mat-form-field></div>     
+          </div>
+          <div class="formGroup"><mat-form-field class="col-6"  appearance="fill">
+            <mat-label>Physics Marks</mat-label>
+            <input matInput type="text" formControlName="physics">
+          </mat-form-field></div> 
+          <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+            <mat-label>Chemistry Marks</mat-label>
+            <input matInput type="text" formControlName="chemistry">
+          </mat-form-field></div>
+          </form>
+          <form [formGroup] = 'tenthFormGroup' *ngIf="studentProfileForm.controls['standard'].value ==='10th'">    
+          <div>
+            <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+                <mat-label>english Marks</mat-label>
+                <input matInput type="text" class="col-6" formControlName="english">
+              </mat-form-field></div>     
+            </div>
+            <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+              <mat-label>science Marks</mat-label>
+              <input matInput type="text" formControlName="science">
+            </mat-form-field></div> 
+            <div class="formGroup"><mat-form-field class="col-6" appearance="fill">
+              <mat-label>mathematics Marks</mat-label>
+              <input matInput type="text" formControlName="mathematics">
+            </mat-form-field></div> 
+          </form>
+      <button type="button" class="btn btn-primary mr-2 ml-2 mt-2 searchBtn" type = "submit">Submit</button>
+</form>
